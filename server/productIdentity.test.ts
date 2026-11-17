@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {groupProductIdentities,validateIdentityGroups} from './productIdentity';
+import {groupProductIdentities,validateIdentityGroups} from './productIdentity.js';
 const products=[{id:'a',code:'1',name:'CHEM-001',supplier:'A',category:'',details:[],userDescription:''},{id:'b',code:'2',name:'CHEM-002',supplier:'A',category:'',details:[],userDescription:''}];
 test('identity screening preserves every supplied product exactly once',()=>{
  const group={label:'CHEM 코드',ids:['a','b'],needsDetails:true};assert.deepEqual(validateIdentityGroups({groups:[group]},products),[group]);

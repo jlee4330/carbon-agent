@@ -1,8 +1,8 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {DEMO_FACTORS,calculateDemo} from '../src/demoFactors.ts';
-import {calculateEmissions} from '../src/factors.ts';
-import {groupPurchases,assignMethod} from '../src/grouping.ts';
+import {DEMO_FACTORS,calculateDemo} from '../src/demoFactors.js';
+import {calculateEmissions} from '../src/factors.js';
+import {groupPurchases,assignMethod} from '../src/grouping.js';
 const columns=['item','amount','currency','receipt_date','purchase_type','major_category','eeio_category','vat_included'].map(id=>({id,name:id}));
 const mappings=columns.map(c=>({field:c.id,column:c.id,status:'recommended' as const,reason:''}));
 const rows=[['세정제','1000','KRW','2025-01-01','일반 구매','부자재','cleaning','제외'],['세정제','2000','KRW','2025-01-02','일반 구매','부자재','cleaning','제외']];

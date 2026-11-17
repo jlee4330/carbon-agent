@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {groupPurchases,assignMethod,transactionAssignments,numericValue,type GroupRule,type GroupDecision} from '../src/grouping.ts';
-import type {Mapping} from '../src/shared.ts';
+import {groupPurchases,assignMethod,transactionAssignments,numericValue,type GroupRule,type GroupDecision} from '../src/grouping.js';
+import type {Mapping} from '../src/shared.js';
 const fields=['code','item','supplier','quantity','unit','amount','currency','category'];
 const columns=fields.map((name,index)=>({id:`c${index}`,name}));
 const mappings:Mapping[]=fields.map((field,index)=>({field,column:`c${index}`,status:'recommended',reason:''}));

@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mappingProjection } from '../src/mapping.ts';
-import { fields,fieldGroups,type Mapping } from '../src/shared.ts';
+import { mappingProjection } from '../src/mapping.js';
+import { fields,fieldGroups,type Mapping } from '../src/shared.js';
 
 test('preview uses column IDs for duplicate headers and reflects corrected mappings', () => {
  const columns = [{ id: 'c0', name: '수량' }, { id: 'c1', name: '수량' }];

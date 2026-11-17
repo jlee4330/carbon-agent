@@ -1,4 +1,4 @@
-import type { Table } from './analysis.ts';
+import type { Table } from './analysis.js';
 
 /** Spread examples over the sheet, with fewer rows for unusually wide sheets. */
 export function sampleTable(table: Table) {

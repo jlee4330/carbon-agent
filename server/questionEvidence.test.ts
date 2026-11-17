@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {questionEvidence} from '../src/questionEvidence';
-import {contextQuestions} from '../src/reviewContext';
-import type {Mapping} from '../src/shared';
+import {questionEvidence} from '../src/questionEvidence.js';
+import {contextQuestions} from '../src/reviewContext.js';
+import type {Mapping} from '../src/shared.js';
 const columns=[{id:'a',name:'GR Posting Date'},{id:'b',name:'Plant'},{id:'c',name:'Amount'}];
 const mappings:Mapping[]=[{field:'receipt_date',column:'a',status:'recommended',reason:''},{field:'site',column:'b',status:'recommended',reason:''},{field:'amount',column:'c',status:'recommended',reason:''}];
 const q=(id:string)=>contextQuestions.find(q=>q.id===id)!;

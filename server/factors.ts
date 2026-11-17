@@ -1,6 +1,6 @@
 import {read,utils} from 'xlsx';
 import {createHash} from 'node:crypto';
-import {EPA_SOURCE,type EmissionFactor} from '../src/factors';
+import {EPA_SOURCE,type EmissionFactor} from '../src/factors.js';
 export function parseEPAFactors(csv:string):EmissionFactor[]{
  if(csv.length>5_000_000||/<html/i.test(csv))throw new Error('배출계수 원본 형식 오류');
  const book=read(csv,{type:'string',raw:true});const table=utils.sheet_to_json<string[]>(book.Sheets[book.SheetNames[0]],{header:1,raw:false,defval:''});

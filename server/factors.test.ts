@@ -1,9 +1,9 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {parseEPAFactors,createFactorProvider} from './factors.ts';
-import {matchingUnreviewedGroups,EPA_SOURCE,factorCandidates,calculateEmissions,validMoneyBasis,type MoneyBasis,type FactorLink} from '../src/factors.ts';
-import {groupPurchases,assignMethod} from '../src/grouping.ts';
-import type {Mapping} from '../src/shared.ts';
+import {parseEPAFactors,createFactorProvider} from './factors.js';
+import {matchingUnreviewedGroups,EPA_SOURCE,factorCandidates,calculateEmissions,validMoneyBasis,type MoneyBasis,type FactorLink} from '../src/factors.js';
+import {groupPurchases,assignMethod} from '../src/grouping.js';
+import type {Mapping} from '../src/shared.js';
 // Synthetic fixture values exercise the parser/calculator; never used by the application as emission factors.
 const header='2017 NAICS Code,2017 NAICS Title,GHG,Unit,Supply Chain Emission Factors without Margins,Margins of Supply Chain Emission Factors,Supply Chain Emission Factors with Margins,Reference USEEIO Code';
 const csv=header+'\n325611,"Soap, cleaning manufacturing",All,kg CO2e/2022 USD,0.5,0.1,0.6,fixture';

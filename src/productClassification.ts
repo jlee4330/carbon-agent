@@ -1,5 +1,5 @@
-import type {Column,Mapping} from './shared';
-import type {PurchaseGroup} from './grouping';
+import type {Column,Mapping} from './shared.js';
+import type {PurchaseGroup} from './grouping.js';
 export type ProductInput={id:string;code:string;name:string;supplier:string;category:string;details:string[];userDescription:string};
 export type ProductClassification={id:string;status:'classified'|'needs_input'|'no_match';productName:string;material:string;use:string;factorIds:string[];reason:string;question:string;};
 export function productKey(group:PurchaseGroup){return JSON.stringify([group.code.trim(),group.item.trim(),group.supplier.trim(),group.category.trim()]);}

@@ -1,5 +1,5 @@
-import {numericValue,type PurchaseGroup,type GroupDecision} from './grouping';
-import type {Column,Mapping} from './shared';
+import {numericValue,type PurchaseGroup,type GroupDecision} from './grouping.js';
+import type {Column,Mapping} from './shared.js';
 export const EPA_SOURCE={id:'epa-scef-1.3.0',name:'US EPA Supply Chain GHG Factors v1.3.0',year:2022,region:'미국',unit:'kg CO₂e / 2022 USD',url:'https://catalog.data.gov/dataset/supply-chain-greenhouse-gas-emission-factors-v1-3-by-naics-6',download:'https://pasteur.epa.gov/uploads/10.23719/1531143/SupplyChainGHGEmissionFactors_v1.3.0_NAICS_CO2e_USD2022.csv'} as const;
 export type EmissionFactor={basis?:'weight'|'spend';id:string;code:string;title:string;value:number;withMargins:number;source:typeof EPA_SOURCE.id|'demo-example';unit:string;year:number;region:'US'|'DEMO';boundary:'cradle-to-production'|'demo-only';};
 export type MoneyBasis={currency:string;purchaseYear:number;usdPerCurrency:number;priceAdjustment:number;evidence:string;confirmed:boolean};

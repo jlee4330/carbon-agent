@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {repeatComparison} from '../src/repeatComparison';
+import {repeatComparison} from '../src/repeatComparison.js';
 const columns=['id','item','quantity','date'].map(id=>({id,name:id}));
 const mappings=[{field:'order_id',column:'id',status:'recommended' as const,reason:''}];
 test('comparison groups purchase IDs and marks differing columns and exact source rows separately',()=>{

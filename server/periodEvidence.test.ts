@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {periodEvidence} from '../src/periodEvidence';
-import {activeContextQuestions,type ReviewAnswer} from '../src/reviewContext';
+import {periodEvidence} from '../src/periodEvidence.js';
+import {activeContextQuestions,type ReviewAnswer} from '../src/reviewContext.js';
 const columns=[{id:'d',name:'입고일'}];const mappings=[{field:'receipt_date',column:'d',status:'recommended' as const,reason:''}];
 test('period proposal scans all rows and preserves mapped date semantics',()=>{
  const p=periodEvidence(columns,[['2025-06-01'],['2025-12-31'],['2025-01-01']],mappings)!;

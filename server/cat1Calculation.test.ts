@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {cat1Row,cat1Readiness,chooseCat1Method} from '../src/cat1Calculation';
-import {groupPurchases,type GroupDecision} from '../src/grouping';
-import {calculateDemo,DEMO_FACTORS} from '../src/demoFactors';
+import {cat1Row,cat1Readiness,chooseCat1Method} from '../src/cat1Calculation.js';
+import {groupPurchases,type GroupDecision} from '../src/grouping.js';
+import {calculateDemo,DEMO_FACTORS} from '../src/demoFactors.js';
 const ids=['receipt_date','item','purchase_type','major_category','material_composition','receipt_weight','weight_unit','eeio_category','amount','currency','amount_krw','vat_included','tax'];
 const columns=ids.map(id=>({id,name:id})),maps=ids.map(id=>({field:id,column:id,status:'recommended' as const,reason:''}));
 const row=(changes:Partial<Record<string,string>>={})=>ids.map(id=>changes[id]??({receipt_date:'2025-01-01',item:'철판',purchase_type:'일반 구매',major_category:'원료 물질',material_composition:'철 100%',receipt_weight:'1000',weight_unit:'g',eeio_category:'steel',amount:'1100',currency:'KRW',amount_krw:'',vat_included:'포함',tax:'100'} as Record<string,string>)[id]);

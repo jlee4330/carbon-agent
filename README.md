@@ -148,3 +148,5 @@ SimpleMethodReview는 중량 기반(성분·성분별 비중, 입고중량, 중�
 - `/api/health`에서 JSON의 `ready: true`를 확인합니다. 이는 키 설정 여부이며 실제 모델 호출 성공 여부는 아닙니다.
 - 로컬 `npm run dev` / `npm start`와 Vercel은 `server/handler.ts`의 동일한 API를 사용합니다. Vercel이 미리 파싱한 요청 본문과 로컬 HTTP 스트림 모두 지원합니다.
 - Vercel 함수의 요청 크기 제한은 로컬 서버의 50MB 한도보다 작습니다. 큰 시트는 별도 업로드 저장소 또는 표본 요청 구조가 필요하며, 함수가 받기 전 발생하는 플랫폼 오류도 화면에서 처리합니다.
+
+서버 ESM 검증: `npm run check:server`는 API와 서버를 JavaScript로 컴파일한 뒤 tsx 없이 일반 Node에서 모든 API 진입점을 로드합니다. 배포 시 모듈 경로 오류를 방지하기 위해 빌드에도 포함했습니다. 서버 및 서버에서 공유하는 모듈의 상대 import에는 `.js` 확장자를 사용합니다.

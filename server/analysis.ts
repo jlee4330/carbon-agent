@@ -1,7 +1,7 @@
 import {setTimeout as delay} from 'node:timers/promises';
-import {fields,type Mapping,type Column} from '../src/shared.ts';
-import {resultJsonSchema,validateMappings} from './schema.ts';
-import {sampleTable} from './sampling.ts';
+import {fields,type Mapping,type Column} from '../src/shared.js';
+import {resultJsonSchema,validateMappings} from './schema.js';
+import {sampleTable} from './sampling.js';
 export type Table={name:string;header:number;columns:Column[];rows:string[][]};
 export class AnalysisError extends Error{constructor(public code:string,message:string,public status=502){super(message);}}
 export function chunkRows(table:Table,budget=96000){

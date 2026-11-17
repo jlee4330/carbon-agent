@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently -k \"node --import tsx --watch server/index.ts\" \"vite --host 127.0.0.1\"",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit && npm run check:server && vite build",
     "start": "node --import tsx server/index.ts",
-    "test": "node --import tsx --test server/*.test.ts"
+    "test": "node --import tsx --test server/*.test.ts",
+    "check:server": "node scripts/check-server-runtime.mjs"
   },
   "dependencies": {
     "react": "^19.1.0",

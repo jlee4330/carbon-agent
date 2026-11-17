@@ -1,7 +1,7 @@
-import {cat1Row,type Cat1Inputs} from './cat1Calculation';
-import type {EmissionFactor,EmissionResult,FactorLink} from './factors';
-import {type PurchaseGroup,type GroupDecision} from './grouping';
-import type {Column,Mapping} from './shared';
+import {cat1Row,type Cat1Inputs} from './cat1Calculation.js';
+import type {EmissionFactor,EmissionResult,FactorLink} from './factors.js';
+import {type PurchaseGroup,type GroupDecision} from './grouping.js';
+import type {Column,Mapping} from './shared.js';
 export const DEMO_SOURCE={id:'demo-example',name:'동작 시연용 예시 계수',notice:'공식 한국 계수가 아닙니다. 실제 배출량 산정·보고에 사용할 수 없습니다.'} as const;
 const spendFactors:EmissionFactor[]=[['cleaning','세척제 · 세정제 · 비누',0.00012],['resin','합성수지 · 플라스틱',0.0002],['steel','철강 · 철판',0.00018],['paper','종이 · 포장재',0.00008],['service','전문 서비스 · 컨설팅',0.00003]].map(([id,title,value])=>({id:`demo:${id}`,code:String(id),title:String(title),value:Number(value),withMargins:Number(value),basis:'spend',source:'demo-example',unit:'예시 kg CO₂e / KRW',year:2026,region:'DEMO',boundary:'demo-only'}));
 export const DEMO_FACTORS:EmissionFactor[]=[...spendFactors,...spendFactors.filter(f=>f.code!=='service').map((f,index)=>({...f,id:`demo:weight:${f.code}`,basis:'weight' as const,value:[1.2,2,1.8,.8][index],withMargins:[1.2,2,1.8,.8][index],unit:'예시 kg CO₂e / kg'}))];

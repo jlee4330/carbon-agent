@@ -3,10 +3,10 @@ import assert from 'node:assert/strict';
 import {Readable} from 'node:stream';
 import {EventEmitter} from 'node:events';
 import type {IncomingMessage,ServerResponse} from 'node:http';
-import analyze from '../api/analyze';
-import health from '../api/health';
-import {requestChunks,allowedOrigin} from './http';
-import {readApiJson} from '../src/apiResponse';
+import analyze from '../api/analyze.js';
+import health from '../api/health.js';
+import {requestChunks,allowedOrigin} from './http.js';
+import {readApiJson} from '../src/apiResponse.js';
 
 function request(url:string,body?:unknown){return Object.assign(Readable.from([]),{url,method:'POST',headers:{host:'carbon-agent-kappa.vercel.app',origin:'https://carbon-agent-kappa.vercel.app'},body}) as unknown as IncomingMessage;}
 function response(){let status=0,text='';const res=Object.assign(new EventEmitter(),{destroyed:false,writeHead(code:number){status=code;},end(value:string){text=value;}});return {res:res as unknown as ServerResponse,result:()=>({status,data:JSON.parse(text)})};}

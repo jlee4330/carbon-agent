@@ -1,5 +1,5 @@
-import {validateProductInputs} from './productClassification';
-import type {ProductInput} from '../src/productClassification';
+import {validateProductInputs} from './productClassification.js';
+import type {ProductInput} from '../src/productClassification.js';
 export type IdentityGroup={label:string;ids:string[];needsDetails:boolean};
 export function validateIdentityGroups(value:unknown,products:ProductInput[]):IdentityGroup[]{
  const groups=(value as {groups?:IdentityGroup[]})?.groups;const allowed=new Set(products.map(p=>p.id)),seen=new Set<string>();

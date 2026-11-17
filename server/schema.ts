@@ -1,4 +1,4 @@
-import {fields,type Mapping,type Column} from '../src/shared.ts';
+import {fields,type Mapping,type Column} from '../src/shared.js';
 export const inputSchema={safeParse(value:unknown):{success:true;data:{columns:Column[];rows:string[][]}}|{success:false}{
  const v=value as {columns:Column[];rows:string[][]};
  if(!v||!Array.isArray(v.columns)||!Array.isArray(v.rows)||!v.columns.length||v.columns.length>200||!v.rows.length||v.rows.length>100000)return {success:false};

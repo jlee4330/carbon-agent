@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {advanceHistory,invalidateReview,type Step} from '../src/history.ts';
+import {advanceHistory,invalidateReview,type Step} from '../src/history.js';
 test('retains unsure branch when the user obtains purchase records',()=>{
  let history:Step[]=[];
  for(const step of ['intro','question','unsure','upload','analyzing','mapping'] as Step[])history=advanceHistory(history,step);

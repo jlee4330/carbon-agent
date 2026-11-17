@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {contextInputKind,contextQuestions,activeContextQuestions,buildContextAnswer,keepCompanyAnswers,contextEvidence,contextFollowups,recordContextAnswer,type ReviewAnswers} from '../src/reviewContext.ts';
+import {contextInputKind,contextQuestions,activeContextQuestions,buildContextAnswer,keepCompanyAnswers,contextEvidence,contextFollowups,recordContextAnswer,type ReviewAnswers} from '../src/reviewContext.js';
 const question=(id:string)=>contextQuestions.find(q=>q.id===id)!;
 const answer=(id:string,choice:string)=>buildContextAnswer(question(id),choice,'');
 const set=(answers:ReviewAnswers,id:string,choice:string)=>recordContextAnswer(answers,id,answer(id,choice));

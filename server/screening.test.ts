@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {screeningSession,screeningQuestions,type ScreeningId} from '../src/screening.ts';
+import {screeningSession,screeningQuestions,type ScreeningId} from '../src/screening.js';
 function complete(choices:Partial<Record<ScreeningId,boolean>>){const answers:boolean[]=[];while(screeningSession(answers).current){const id=screeningSession(answers).current!;answers.push(choices[id]??false);assert.ok(answers.length<=15);}return screeningSession(answers);}
 test('no branches skip warehouse, trade ownership and asset control questions',()=>{
  const result=complete({});assert.deepEqual(result.entries.map(entry=>entry.id),['1.1','1.2','1.5','2.1','2.2','3.1','4.1','5.1']);assert.deepEqual(result.categories,[1,11]);assert.equal(result.scope12,false);

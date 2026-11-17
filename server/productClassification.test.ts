@@ -1,8 +1,8 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {classifyProducts,validateProductInputs,validateClassifications} from './productClassification.ts';
-import {needsProductMeaning,mergeProductInputs,type ProductInput,type ProductClassification} from '../src/productClassification.ts';
-import {EPA_SOURCE,type EmissionFactor} from '../src/factors.ts';
+import {classifyProducts,validateProductInputs,validateClassifications} from './productClassification.js';
+import {needsProductMeaning,mergeProductInputs,type ProductInput,type ProductClassification} from '../src/productClassification.js';
+import {EPA_SOURCE,type EmissionFactor} from '../src/factors.js';
 const product:ProductInput={id:'p1',code:'CHEM-001',name:'CHEM-001',supplier:'supplier',category:'원재료',details:[],userDescription:''};
 const factor:EmissionFactor={id:'fixture',title:'Soap manufacturing',code:'325611',value:1,withMargins:2,source:EPA_SOURCE.id,year:2022,unit:EPA_SOURCE.unit,region:'US',boundary:'cradle-to-production'};
 const known={...product,userDescription:'설비 세척에 사용하는 비누 기반 세정제'};

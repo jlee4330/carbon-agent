@@ -1,11 +1,11 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import * as XLSX from 'xlsx';
-import {analyzeTable,chunkRows,mergeMappings,AnalysisError,type Table} from './analysis.ts';
-import {fields,type Mapping} from '../src/shared.ts';
-import {workbookTables} from '../src/workbook.ts';
-import {inputSchema} from './schema.ts';
-import {sampleTable} from './sampling.ts';
+import {analyzeTable,chunkRows,mergeMappings,AnalysisError,type Table} from './analysis.js';
+import {fields,type Mapping} from '../src/shared.js';
+import {workbookTables} from '../src/workbook.js';
+import {inputSchema} from './schema.js';
+import {sampleTable} from './sampling.js';
 const mappings:Mapping[]=fields.map(([field])=>({field,column:field==='item'?'c0':null,status:field==='item'?'recommended':'missing',reason:'자료 확인'}));
 const response=()=>new Response(JSON.stringify({status:'completed',output:[{type:'message',content:[{type:'output_text',text:JSON.stringify({mappings})}]}]}));
 test('all rows and full cell values are retained through chunking',()=>{

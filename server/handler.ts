@@ -1,16 +1,16 @@
-import {allowedOrigin,requestChunks} from './http';
-import {groupProductIdentities} from './productIdentity';
-import {reviewRepeats,validateRepeatInput} from './repeatReview';
-import {DEMO_FACTORS} from '../src/demoFactors';
-import {validateProductInputs,classifyProducts} from './productClassification';
-import {createFactorProvider} from './factors';
+import {allowedOrigin,requestChunks} from './http.js';
+import {groupProductIdentities} from './productIdentity.js';
+import {reviewRepeats,validateRepeatInput} from './repeatReview.js';
+import {DEMO_FACTORS} from '../src/demoFactors.js';
+import {validateProductInputs,classifyProducts} from './productClassification.js';
+import {createFactorProvider} from './factors.js';
 import {type IncomingMessage,type ServerResponse} from 'node:http';
 import {readFile,stat} from 'node:fs/promises';
 import {resolve,extname,sep} from 'node:path';
-import {inputSchema} from './schema.ts';
-import {loadConfig} from './config.ts';
-import {sampleTable} from './sampling.ts';
-import {AnalysisError,analyzeTable,type Table} from './analysis.ts';
+import {inputSchema} from './schema.js';
+import {loadConfig} from './config.js';
+import {sampleTable} from './sampling.js';
+import {AnalysisError,analyzeTable,type Table} from './analysis.js';
 
 const send=(res:ServerResponse,status:number,data:unknown)=>{res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(data));};
 const loadFactors=createFactorProvider();

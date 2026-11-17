@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {codeInRange,validCodeRange,listedCodes} from '../src/productBatch';
+import {codeInRange,validCodeRange,listedCodes} from '../src/productBatch.js';
 
 test('code ranges include both endpoints and compare numeric suffixes',()=>{
  assert.equal(codeInRange('CHEM-0009','CHEM-9','CHEM-100'),true);

@@ -1,8 +1,8 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {recommendMethod} from '../src/methodRecommendation.ts';
-import {EPA_SOURCE,type EmissionFactor,type MoneyBasis} from '../src/factors.ts';
-import {groupPurchases,assignMethod} from '../src/grouping.ts';
+import {recommendMethod} from '../src/methodRecommendation.js';
+import {EPA_SOURCE,type EmissionFactor,type MoneyBasis} from '../src/factors.js';
+import {groupPurchases,assignMethod} from '../src/grouping.js';
 const columns=[{id:'item',name:'item'},{id:'amount',name:'amount'},{id:'currency',name:'currency'}];
 const mappings=columns.map(c=>({field:c.id,column:c.id,status:'recommended' as const,reason:''}));
 const group=groupPurchases(columns,[['비누','100','USD']],mappings,[])[0];

@@ -1,5 +1,5 @@
-import {numericValue,type PurchaseGroup} from './grouping';
-import type {Column,Mapping} from './shared';
+import {numericValue,type PurchaseGroup} from './grouping.js';
+import type {Column,Mapping} from './shared.js';
 export type Cat1Basis='weight'|'spend';
 export type Cat1Inputs=Partial<Record<'purchase_type'|'major_category'|'material_composition'|'eeio_category'|'vat_included',string>>;
 export function cat1Row(row:string[],columns:Column[],mappings:Mapping[],input:Cat1Inputs={}){

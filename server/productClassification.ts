@@ -1,5 +1,5 @@
-import {needsProductMeaning,missingMeaning,type ProductInput,type ProductClassification} from '../src/productClassification';
-import type {EmissionFactor} from '../src/factors';
+import {needsProductMeaning,missingMeaning,type ProductInput,type ProductClassification} from '../src/productClassification.js';
+import type {EmissionFactor} from '../src/factors.js';
 export function validateProductInputs(value:unknown):ProductInput[]{
  const products=(value as {products?:unknown})?.products;if(!Array.isArray(products)||!products.length||products.length>20)throw new Error('한 번에 최대 20개 품목을 분류할 수 있습니다.');
  const ids=new Set<string>();for(const p of products){for(const key of ['id','code','name','supplier','category','userDescription'])if(typeof p?.[key]!=='string'||p[key].length>2000)throw new Error('품목 입력 형식을 확인해주세요.');if(ids.has(p.id))throw new Error('중복 품목입니다.');ids.add(p.id);if(!Array.isArray(p.details)||p.details.length>12||p.details.some((s:unknown)=>typeof s!=='string'||s.length>300))throw new Error('사양 입력 형식을 확인해주세요.');}return products;

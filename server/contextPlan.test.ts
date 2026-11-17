@@ -1,9 +1,9 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {buildContextPlan,approvedQuantityMappings} from '../src/contextPlan.ts';
-import {contextQuestions,buildContextAnswer} from '../src/reviewContext.ts';
-import {groupPurchases} from '../src/grouping.ts';
-import type {Mapping} from '../src/shared.ts';
+import {buildContextPlan,approvedQuantityMappings} from '../src/contextPlan.js';
+import {contextQuestions,buildContextAnswer} from '../src/reviewContext.js';
+import {groupPurchases} from '../src/grouping.js';
+import type {Mapping} from '../src/shared.js';
 const fields=['item','code','receipt_quantity','receipt_unit','order_quantity','order_unit','amount','currency','order_id','site'];
 const columns=fields.map(id=>({id,name:id}));
 const mappings:Mapping[]=fields.map(field=>({field,column:field,status:'recommended',reason:''}));

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {cat1Template} from '../src/cat1Template';
-import {fields,templateRequirements} from '../src/shared';
+import {cat1Template} from '../src/cat1Template.js';
+import {fields,templateRequirements} from '../src/shared.js';
 test('template view preserves all template fields including KRW issue requirement and the original six sections',()=>{
  assert.deepEqual(cat1Template.map(g=>g.title),['A. 식별 정보','B. 조직 정보','C. 구매정보','D. 활동량','E. 구매금액','F. 기타']);
  const entries=cat1Template.flatMap(g=>g.fields);assert.equal(entries.length,23);assert.equal(new Set(entries.map(f=>f.id)).size,23);

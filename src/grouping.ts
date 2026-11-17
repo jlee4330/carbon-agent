@@ -1,4 +1,4 @@
-import type {Column,Mapping} from './shared';
+import type {Column,Mapping} from './shared.js';
 export type CalculationMethod='supplier'|'quantity'|'spend'|'hold';
 export type GroupRule={id:string;column:string;operator:'equals'|'contains';value:string;label:string};
 export type GroupDecision={method:CalculationMethod;confirmed:true;note:string;source?:'manual'|'bulk'|'rule';ruleId?:string};
