@@ -1,3 +1,4 @@
+import {readApiJson} from './apiResponse';
 import type {Cat1Inputs} from './cat1Calculation';
 import {DEMO_FACTORS,DEMO_SOURCE,calculateDemo} from './demoFactors';
 import {SimpleMethodReview,DemoResults} from './SimpleMethodReview';
@@ -88,7 +89,8 @@ function App(){
  const controller=new AbortController();abort.current=controller;setAnalyzing(true);
  try{
  const response=await fetch('/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sheets:tables}),signal:controller.signal});
- if(!response.ok){const result=await response.json();throw new Error(result.error);}
+ if(!response.ok){const result=await readApiJson(response);throw new Error(result.error);}
+ if(!response.headers.get('content-type')?.includes('application/x-ndjson'))throw new Error('분석 API 응답 형식이 올바르지 않습니다. 서버 배포 설정을 확인해주세요.');
  if(!response.body)throw new Error('분석 연결이 끊겼습니다.');
  const reader=response.body.getReader(),decoder=new TextDecoder();let buffer='';let finished=false;
  while(true){const {value,done}=await reader.read();buffer+=decoder.decode(value,{stream:!done});const lines=buffer.split('\n');buffer=lines.pop()||'';for(const line of lines){if(!line.trim())continue;const event=JSON.parse(line);if(abort.current!==controller)return;

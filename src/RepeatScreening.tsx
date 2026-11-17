@@ -1,3 +1,4 @@
+import {readApiJson} from './apiResponse';
 import {useEffect,useMemo,useState} from 'react';
 import type {Column,Mapping} from './shared';
 import {repeatComparison} from './repeatComparison';
@@ -9,7 +10,7 @@ export function RepeatScreening({columns,rows,mappings,indices}:{columns:Column[
  const sample=useMemo(()=>{const ids=new Set(mappings.filter(m=>relevant.includes(m.field)&&m.column).map(m=>m.column));const selected=columns.map((column,index)=>({column,index})).filter(v=>ids.has(v.column.id)).slice(0,29);if(!selected.length)selected.push(...columns.slice(0,29).map((column,index)=>({column,index})));
  return {columns:[{id:'__row',name:'원본 행'},...selected.map(v=>v.column)],rows:selectedRows.slice(0,12).map(i=>[String(i+1),...selected.map(v=>(rows[i][v.index]??'').slice(0,300))])};},[columns,rows,mappings,selectedRows]);
  const [result,setResult]=useState(''),[error,setError]=useState('');
- useEffect(()=>{const controller=new AbortController();let alive=true;setResult('');setError('');fetch('/api/review-repeats',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({columns:sample.columns.map(c=>c.name.slice(0,200)),rows:sample.rows}),signal:controller.signal}).then(async response=>{const data=await response.json();if(!response.ok)throw new Error(data.error||'검토 실패');if(alive)setResult(data.summary);}).catch(error=>{if(alive)setError(error.message);});return()=>{alive=false;controller.abort();};},[sample]);
+ useEffect(()=>{const controller=new AbortController();let alive=true;setResult('');setError('');fetch('/api/review-repeats',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({columns:sample.columns.map(c=>c.name.slice(0,200)),rows:sample.rows}),signal:controller.signal}).then(async response=>{const data=await readApiJson(response);if(!response.ok)throw new Error(data.error||'검토 실패');if(alive)setResult(data.summary);}).catch(error=>{if(alive)setError(error.message);});return()=>{alive=false;controller.abort();};},[sample]);
  const visibleColumns=columns.map((column,index)=>({column,index})).filter(({column,index})=>sample.columns.some(c=>c.id===column.id)||selected?.changed.has(index));
  const pageCount=Math.max(1,Math.ceil(selectedRows.length/20));const safePage=Math.min(page,pageCount-1);
  return <div className="repeat-screening">
